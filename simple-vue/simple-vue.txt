@@ -1,0 +1,19 @@
+
+# A simple app 
+
+First step will be to create a starting structure. 
+
+npm  i -g vue-cli
+
+vue init webpack simple-app
+
+Vue adopts a philosophy that HTML, CSS, and JavaScript of a component should all be inside one file.
+
+This is similar to how JSX resides inside a render function in React.js, only styles in React are usually put into a separate file.
+
+
+The next step will be adding the routes definitions.
+
+They will be located inside routes/index.js 
+file that was crated for us by Vue CLI 
+
