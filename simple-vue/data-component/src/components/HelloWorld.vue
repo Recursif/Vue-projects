@@ -1,21 +1,13 @@
 <template>
   <div>
-    <h1>Hello {{person.firstname}} {{person.lastname}} from {{from}}!!!</h1>
+    <h1>Hello {{firstname}} {{lastname}} from {{from}}!!!</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
-    return {
-      person: {
-        firstname: 'Homer',
-        lastname: 'Simpson',
-      },
-      from: 'Spingfield',
-    }
-  }
+  props: ['firstname', 'lastname', 'from']
 }
 </script>
 

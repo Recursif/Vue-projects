@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <h1>Data component:</h1>
-    <HelloWorld />
+    <HelloWorld
+      firstname="Marge"
+      lastname="Simpson"
+      from="Spingfield"
+    />
   </div>
 </template>
 
