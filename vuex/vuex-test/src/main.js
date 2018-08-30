@@ -2,34 +2,41 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
-import App from './App'
-import router from './router'
 
 Vue.config.productionTip = false
-Vue.use(Vuex)
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
+Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
       count: 0
   },
   mutations: {
-      increment (state) {
-          state.count++
-      }
+      increment: state => state.count++,
+    decrement: state => state.count--
   }
 })
 
-store.commit('increment')
-store.commit('increment')
-store.commit('increment')
 
-console.log(store.state.count)
-
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  computed: {
+    count () {
+	    return store.state.count
+    }
+  },
+  methods: {
+    increment () {
+      store.commit('increment')
+    },
+    decrement () {
+    	store.commit('decrement')
+    }
+  },
+  template: `<div>
+    {{ count }}
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>`,
+})
