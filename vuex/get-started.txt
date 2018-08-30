@@ -1,0 +1,27 @@
+
+## Get Started
+
+
+At the center of every Vuex application
+is the store.
+
+A "store" is basically a container
+that holds your application state.
+
+There are two things that make
+a Vuex store different from a
+plain global object:
+
+Vuex stores are reactive.
+When Vue components retrieve state from it,
+they will reactively and efficiently update if the 
+store's state changes.
+
+You cannot directly mutate the store's state.
+The only way to change a store's state is 
+by explicitly commiting mutations.
+
+This ensures every state change leaves a 
+track-able record, and ena
+
+

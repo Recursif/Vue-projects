@@ -1,0 +1,8 @@
+
+# Données d’un composant
+
+La fonction data retourne toutes les données réactives constituant un composant : l’interpolation (le 
+rendu du modèle dans la vue) s’effectue automatiquement à travers une syntaxe “moustache” 
+encadrant par des doubles accolades le nom des données du composant dans le template HTML.
+
+Dans l’exemple suivant, on a enrichi le composant Hello.vue afin qu’il dispose d’un ensemble de données avec une valeur par défaut affichée automatiquement :

@@ -1,0 +1,112 @@
+
+# Vuex 
+
+## Install
+
+npm install vuex --save
+
+## What is Vuex?
+
+Vuex is a state management pattern + library 
+for vue.js apps.
+
+It serves as centralized store for all 
+the components in the app,
+with rules ensuring that the state
+can only be mutated in a predictable fashion.
+
+It also integrates with Vue's official devtools extension
+to provide advanced features such as zero-config time-travel
+debugging and state snapshot export / import.
+
+https://github.com/vuejs/vue-devtools
+
+
+## What is a state management pattern?
+
+Let's start with a simple Vue counter app:
+
+new Vue({
+    // state
+    data () {
+        return {
+            count: 0
+        }
+    },
+    // view
+    template: `
+        <div>{{ count }}</div>
+    `,
+    // actions
+    methods: {
+        increment () {
+            this.count++
+        }
+    }
+})
+
+
+It is a self-contained app with the following parts:
+
+The state, which is the source of truth that drives our app;
+The view, which is just a declarative mapping of the state;
+
+The actions, which are the possible ways the state 
+could change in reaction to user inputs from 
+the view.
+
+This is an extremely simple representation 
+of the concept of "one-way data flow":
+
+        action
+        ^    |
+        |    v
+     view <--state
+
+However, the simplicity breaks down when we have 
+multiple components that share common state:
+
+Multiple views may depend on the same piece of state.
+Actions from different views may need to mutate the same piece of state.
+
+For problem one, passing props can be tedious
+for deeply nested components, 
+and simply doesn't work for sibling components.
+
+For problem two, we often find ourselves
+resorting to solutions such as reaching
+for direct parent/child instance references
+or trying to mutate and synchronize multiple
+copies of the state via events.
+
+Both of these patterns are brittle and
+quickly lead to unmaintainable code.
+
+So why don't we extract the shared state out of the components, and manage it in a global singleton? With this, our component tree becomes a big "view", and any component can access the state or trigger actions, no matter where they are in the tree!
+
+In addition, by defining and separating
+the concepts involved in state management
+and enforcing certain rules, we also give our code more structure and maintainability.
+
+This is the basic idea behind Vuex, inspired by Flux,
+Redux and The Elm Architecture.
+
+Unlike the other patterns, Vuex is
+also a library implementation tailored
+specifically for Vue.js to take advantage of
+its granular reactivity system for efficient updates.
+
+        Backend API
+            |
+ dispatch   |        commit
+    ----> Actions -------
+    |                   |
+    |                   v
+Vue components       Mutations  --- devtools
+    |                   |
+    |                   |
+    ----- State ---------
+  render             mutate
+
+
+
