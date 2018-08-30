@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
+import App from './App'
+import router from './router'
 
 Vue.config.productionTip = false
 
@@ -12,31 +14,16 @@ const store = new Vuex.Store({
       count: 0
   },
   mutations: {
-      increment: state => state.count++,
+    increment: state => state.count++,
     decrement: state => state.count--
   }
 })
 
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  computed: {
-    count () {
-	    return store.state.count
-    }
-  },
-  methods: {
-    increment () {
-      store.commit('increment')
-    },
-    decrement () {
-    	store.commit('decrement')
-    }
-  },
-  template: `<div>
-    {{ count }}
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-  </div>`,
+  store,
+  router,
+  components: { App },
+  template: '<App/>'
 })

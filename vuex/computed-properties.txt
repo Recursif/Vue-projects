@@ -1,0 +1,38 @@
+
+ 
+# Computed Properties
+
+In-template expressions are very convenient,
+but they are meant for simple operations.
+
+Putting too much logic in your templates
+can make them bloated and hard to maintain.
+
+For example:
+<div id="example">
+  {{ message.split('').reverse().join('') }}
+</div>
+
+
+That’s why for any complex logic, you should use a computed property.
+
+
+## Basic Example
+<div id="example">
+  <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+var vm = new Vue({
+  el: '#example',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // a computed getter
+    reversedMessage: function () {
+      // `this` points to the vm instance
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
