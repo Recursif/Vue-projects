@@ -1,0 +1,258 @@
+
+# Persisting user authentification with Vuex in Vue 
+
+Vuex is a state management pattern for Vue applications. 
+
+The basic idea behind Vuex, inspired by Flux, Redux,
+and The Elm Architecture.
+
+## The benefits of Vuex:
+
+1. Unlike other Redux implementations, you don't 
+need to use immutability to improve your app performance.
+
+2. Built-in side effects management with actions.
+There is no reason to use third-party middleware like redux-thunk 
+
+3. Built in support for getters.
+
+4. Built in support for modules and dynamic module registration.
+
+
+We are going to create a simple app that will simulate 
+authentification.
+
+
+The code is straightforward. We have two routes:
+
+The Home page that will render the Home component.
+The Login page that will render the Login component.
+
+
+## The store 
+
+Let’s see the different pieces that make up Vuex store.
+
+### State
+
+new Vuex.Store({
+   state: {
+     isLoggedIn: !!localStorage.getItem(“token”)
+   }
+});
+
+The state object is a single object contains
+all your application level state and
+serves as the “single source of truth.”
+
+In our app, we need to know if the user
+is logged in by checking if the user has
+a token in the browser local storage.
+
+
+### Mutations 
+
+const LOGIN = "LOGIN"
+const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+const LOGOUT = "LOGOUT"
+
+const store = new Vuex.Store({
+    state: {
+        isLoggedIn: !!localStorage.getItem("token")
+    },
+    mutations: {
+        [LOGIN] (state) {
+            state.pending = true;
+        },
+        [LOGIN_SUCCESS] (state) {
+            state.isLoggedIn = true;
+            state.pending = false;
+        },
+        [LOGOUT] (state) {
+            state.isLoggedIn = false;
+        }
+    }
+})
+
+In Vuex mutations are the equivalents of reducers in Redux.
+The key difference is that you don't have to use immutability 
+to improve your performance.
+
+## Commits 
+
+In vuex commits are the equivalents of actions in Redux.
+The only way to change state in a Vuex store
+is by committing a mutation.
+
+Mutation handler functions must be synchronous.
+
+
+## Actions 
+
+actions: {
+    login({ commit }, creds) {
+        commit(LOGIN); // show spinner
+        return new Promise(resolve => {
+            setTimeout(() => {
+                localStorage.setItem("token", "JWT");
+                commit(LOGIN_SUCCESS);
+                resolve();
+            }, 1000)
+        })
+    },
+    logout({ commit }) {
+        localStorage.removeItem("token");
+        commit(LOGOUT);
+    }
+}
+
+
+In Vuex the way to handle side effects
+( like asynchronous operations ) is by dispatching actions.
+Actions commit mutations.
+
+
+In our app, we have two actions:
+
+The login action flow:
+1. Commit LOGIN mutation. ( useful for showing a spinner ).
+2. Returning a promise because when the operation complete we want to register a function that will redirect the user to the homepage from our component. 
+2. Simulate asynchronous operation with the setTimeout function. ( like HTTP request )
+3. Save the JWT to local storage. 
+4. Commit LOGIN_SUCCESS mutation that will change the isLoggedIn state to true.
+5. Resolve the promise.
+
+
+The logout action flow:
+1. Remove the JWT from local storage.
+2. Commit LOGOUT mutation that will change the isLoggedIn state to false.
+
+
+## Getters 
+
+In vuex getters are the equivalents of selectors in Redux.
+
+getters: {
+  isLoggedIn: state => {
+    return state.isLoggedIn
+   }
+}
+
+The final step is to pass the store to our Vue app:
+
+const app = new Vue({ 
+    router, 
+    store 
+}).$mount(‘#app’)
+
+By providing the store option to the root instance,
+the store will be injected into all child components
+of the root and will be available on them as this.$store.
+
+
+## The components 
+
+Home component
+
+const Home = Vue.component('home', {
+  template: "<h1>Home page</h1>"
+});
+
+Main nav component
+
+
+const mainNavTpl = `
+  <section>
+    <router-link to="/">Home</router-link>
+    <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
+    <a href="#" v-if="isLoggedIn" @click="logout">Logout</a> 
+  </section>   
+`
+
+const MainNav = Vue.component('main-nav', {
+    template: mainNavTp1,
+    methods: {
+        logout() {
+            this.$store.dispatch('logout');
+        }
+    },
+    computed: {
+        isLoggedIn() {
+            return this.$store.getters.isLoggedIn;
+        }
+    }
+})
+
+
+The main-nav component is responsible for displaying our main navigation. 
+
+First, we are setting a computed property as a getter from our store,
+every time there is a change in our isLoggedIn state, Vue will re-render the component.
+
+Next, we are setting a logout method that will dispatch the logout action, 
+remove the token from local storage, and commit LOGOUT mutation that will 
+set the isLoggedIn state to false.
+
+Quick tip: You can use Vuex helpers to make your life easier:
+
+methods: {
+  ...Vuex.mapActions([“logout”])}
+}
+getters: {
+  ...Vuex.mapGetters([“isLoggedIn”])
+}
+
+
+## Login component 
+
+const loginTpl = `
+  <form @submit.prevent="login({ email, password })">
+   <input type="text" placeholder="email" v-model="email">
+   <input type="password" placeholder="password" v-model="password">
+   <button type="submit">Login</button>
+  </form>
+`
+
+const Login = Vue.component('login', {
+    template: loginTp1,
+    data() {
+        return {
+            email: "",
+            password: "",
+        }
+    },
+    methods: {
+        login() {
+            this.$store.dispatch("login", {
+                email: this.email,
+                password: this.password
+            }).then(() => {
+                this.$router.push("/")
+            })
+        }
+    }
+})
+
+The Login component is a simple form with email and password.
+When the user submits the form, we are dispatching
+the login action, and when the promise is resolved,
+we are redirecting the user to the homepage.
+
+
+
+Improvements:
+
+Add a spinner with the help of the pending state.
+Add Error handling.
+Add Navigation Guards.
+Extract this to a self-contained auth module.
+
+
+
+
+
+
+
+
+
+
