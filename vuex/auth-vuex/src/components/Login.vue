@@ -1,8 +1,8 @@
 <template>
-  <form @submit.prevent="login({ email, password })">
-   <input type="text" placeholder="email" v-model="email">
-   <input type="password" placeholder="password" v-model="password">
-   <button type="submit">Login</button>
+  <form  class="form" @submit.prevent="login({ email, password })">
+   <input class="input" type="text" placeholder="email" v-model="email">
+   <input class="input" type="password" placeholder="password" v-model="password">
+   <button class="button" type="submit">Login</button>
   </form>
 </template>
 
@@ -28,7 +28,27 @@ export default {
 }
 </script>
 
-
 <style>
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 250px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+.input {
+    height: 40px;
+    margin: 10px;
+}
+
+.button {
+    height: 40px;
+    margin: 10px;
+    background-color: rgb(0, 184, 106);
+    border: 1px solid #eee;
+    border-radius: 2px;
+}
 
 </style>

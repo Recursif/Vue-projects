@@ -233,11 +233,11 @@ const Login = Vue.component('login', {
     }
 })
 
+
 The Login component is a simple form with email and password.
 When the user submits the form, we are dispatching
 the login action, and when the promise is resolved,
 we are redirecting the user to the homepage.
-
 
 
 Improvements:

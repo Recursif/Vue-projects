@@ -1,8 +1,8 @@
 <template>
-  <section>
-    <router-link to="/">Home</router-link>
-    <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
-    <a href="#" v-if="isLoggedIn" @click="logout">Logout</a> 
+  <section class="section">
+    <router-link class="link" to="/">Home</router-link>
+    <router-link class="link" to="/login" v-if="!isLoggedIn">Login</router-link>
+    <a href="#" class="link" v-if="isLoggedIn" @click="logout">Logout</a> 
   </section>  
 </template>
 
@@ -24,5 +24,20 @@ export default {
 
 
 <style>
+.section {
+    margin-top: 40px;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 110%;
+    color: White;
+    background-color: rgb(250, 116, 124);
+    padding: 15px;
+}
+
+.link:hover {
+    background-color: rgb(196, 68, 75);
+}
 
 </style>

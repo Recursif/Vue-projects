@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Home page</h1>
+  <div class="center">
+    <h1 class="home">Home page</h1>
   </div>
 </template>
 
@@ -12,5 +12,13 @@ export default {
 
 
 <style>
+.center {
+  width: 100%;
 
+}
+
+.home {
+  margin: auto;
+  margin-top: 50px;
+}
 </style>
