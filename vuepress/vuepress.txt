@@ -1,0 +1,30 @@
+
+
+npm i vuepress 
+
+vuepress
+
+
+echo "# Hello vuepress" > Readme.md
+
+
+vuepress dev in the directory
+
+vuepress build
+
+vuepress eject
+
+
+
+# Hello vue 
+
+Hello world 
+
+> markdown!
+
+::: tip 
+yes!
+:::
+
+
+[go to another page](./hello.md)
