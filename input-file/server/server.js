@@ -6,7 +6,17 @@ const express = require('express')
 const app = express()
 
 var multer  = require('multer')
-const upload = multer({ dest: "uploads/" })
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname.split('.')[0] + '-' + Date.now() + path.extname(file.originalname));
+    }
+})
+
+const upload = multer({ storage: storage })
 
 
 
@@ -24,6 +34,8 @@ app.get('/', (req, res) => {
 
 app.post('/upload', upload.single('file'), (req, res) => {
     console.log(req.file);
+        
+    console.log(req.body.email)
     res.redirect('/')
 })
 
