@@ -1,0 +1,19 @@
+
+.img-leto {
+    height: 60px;
+}
+
+.img-leto:hover {
+    filter: saturate(50%);
+}
+
+.link-logo{
+    width: 100%;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.img-logo{
+    display: block;
+    margin:auto;
+}

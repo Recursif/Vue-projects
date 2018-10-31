@@ -1,0 +1,169 @@
+
+
+.border-top-style {
+    border-top: 2px solid #666;
+}
+
+
+.box1 {
+    max-width: 425px;
+}
+
+.box-white {
+    max-width: 450px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.btn-blue {
+    font-size: 120%;
+    margin: auto;
+    margin-bottom: 15px;
+    background-color: rgb(64, 81, 174, 1);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.btn-blue:hover {
+    background-color: rgb(64, 81, 174, 0.95);
+}
+
+
+.img-leto {
+    height: 60px;
+}
+
+.img-leto:hover {
+    filter: saturate(50%);
+}
+
+
+.my-100px {
+    margin-top: 100px;
+    padding-bottom: 100px;
+}
+
+.mt-100px {
+    margin-top: 100px;
+}
+
+.icon-bar {
+    background-color: inherit;
+    border: 1px solid;
+}
+
+.navbar-right {
+    float: right!important;
+}
+
+.border-header {
+    border-bottom: 1px solid #FFFFEF;
+}
+
+.border-section {
+    border-top: 1px solid #eee;
+}
+
+.navbar-toggler-icon {
+    color: rgba(0, 60, 94, 1)
+}
+
+.button-bar {
+    width:120px;
+    height: 57px;
+
+    font-family: 'Roboto';
+    font-size: 120%;
+    font-weight: bold;
+
+    background-color: rgb(64, 81, 174, 1);
+    color: rgb(255, 255, 255, 1);
+
+    z-index: 1;
+    
+    border: 2px solid rgb(0, 60, 94, 0.7);
+    border-left: 2px solid rgb(0, 0, 0, 0);
+    border-radius: 3px;
+    
+}
+
+.button-bar:hover {
+    background-color: rgba(64, 181, 174, 1);
+}
+
+.input-bar {
+    width: 460px;
+    height: 56px;
+    margin: 0px;
+    border: 2px solid rgb(0, 60, 94, 0.7);
+    
+    border-radius: 3px;
+    padding-left: 30px;
+    margin-right: -10px;
+
+    font-size: 105%;
+}
+
+.img-bar {
+    width: 35px;
+}
+
+
+@media (max-width: 991.98px) {
+    .input-bar {
+    width: 60%
+    }
+}
+
+
+
+.landing {
+    position:relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    height: 750px;
+}
+
+
+.landing-phrase {
+    margin: 30px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    
+    
+    font-size: 300%;
+}
+
+
+@media screen and (max-width: 992px) {
+    .landing-phrase {
+        font-size: 250%;
+        margin: 40px;
+        margin-top: 100px;
+    }
+}
+
+.img-landing {
+    position: absolute;
+    top: -200px;
+    left: 0px;
+    z-index: -1;
+    width: 100%;
+}
+
+@media screen and (max-width: 1600px) {
+    .img-landing {
+        width: 1700px;
+        overflow: hidden;
+    }
+}
+
+.mt-70px {
+    margin-top: 70px;
+}

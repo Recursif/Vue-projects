@@ -1,0 +1,91 @@
+
+.blue-leto {
+    color: rgba(0, 60, 94,1);
+}
+
+.white-leto {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.bg-blue-leto {
+    background-color: rgba(0, 60, 94, 1);
+}
+
+.bg-white {
+    background-color: rgba(255, 255, 255, 1);
+}
+.bg-light {
+    background-color: rgba(250, 250, 250, 1);
+}
+
+.bg-red {
+    background-color: #9b111e;
+}
+
+.bg-purple {
+    background-color: rgb(64, 81, 174, 1);
+}
+
+.bg-purple:hover {
+    background-color: rgb(64, 81, 174, 0.95);
+}
+
+
+.icon-menu {
+    width: 35px;
+    height: auto
+
+}
+
+.border-menu {
+    border: solid 1px;
+    border-color: rgb(0, 60, 94, 0.6);
+    border-radius: 2px;
+}
+
+.border-header {
+    box-shadow: -2x 0px 2em rgb(0, 60, 94, 0.6);
+}
+
+.btn-blue {
+    background-color: rgb(64, 81, 174, 1);
+    font-family: 'Roboto';
+    font-size: 105%;
+    font-weight: bold;
+    color: rgb(255, 255, 255, 1);
+}
+
+
+.btn-blue:hover {
+    background-color: rgb(64, 81, 174, 0.85);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+
+
+.w-200 {
+    width: 160px;
+}
+
+
+
+.link-right {
+    margin-left: auto;
+}
+
+@media screen and (max-width: 576px) {
+    .link-right {
+        margin: auto;
+    }
+}
+
+.bg-transparent {
+    background-color: rgb(255, 255, 255, 0);
+}
+
+
+
+

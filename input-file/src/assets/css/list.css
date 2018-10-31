@@ -1,0 +1,16 @@
+
+.list-box {
+    max-width: 850px;
+    width: 320px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-box:hover {
+    max-width: 860px;
+    
+    border: 2px solid #eee;
+}
